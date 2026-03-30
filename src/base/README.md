@@ -7,7 +7,7 @@ Base devcontainer image layer
 
 ```json
 "features": {
-    "ghcr.io/trevorlauder/devcontainer/base:1": {}
+    "ghcr.io/trevorlauder/devcontainers/base:1": {}
 }
 ```
 
@@ -21,4 +21,4 @@ Base devcontainer image layer
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/trevorlauder/devcontainer/blob/main/src/base/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/trevorlauder/devcontainers/blob/main/src/base/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
