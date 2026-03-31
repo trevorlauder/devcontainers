@@ -50,6 +50,7 @@ jobs:
         id: push_image_info
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPOSITORY: ${{ github.repository }}
         run: |
           set -e
           echo "Start."
@@ -57,6 +58,7 @@ jobs:
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
           git config pull.rebase false
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GH_REPOSITORY}"
           branch=automated-documentation-update-${GITHUB_RUN_ID}
           git checkout -b "${branch}"
           message='Automated documentation update'
