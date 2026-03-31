@@ -6,6 +6,17 @@
   "schedule": [
     "every weekend"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["src/base/devcontainer-feature\\.json"],
+      "matchStrings": [
+        "\"chezmoiVersion\"[\\s\\S]*?\"default\":\\s*\"(?<currentValue>[^\"]+)\""
+      ],
+      "depNameTemplate": "twpayne/chezmoi",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
   "packageRules": [
     {
       "matchManagers": [
@@ -20,10 +31,10 @@
       "groupName": "mise"
     },
     {
-      "matchManagers": [
-        "dprint"
+      "matchDepNames": [
+        "twpayne/chezmoi"
       ],
-      "groupName": "dprint"
+      "groupName": "chezmoi"
     }
   ]
 }
