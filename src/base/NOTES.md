@@ -73,8 +73,7 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
     "source=shell-history-${localWorkspaceFolderBasename},target=/commandhistory,type=volume",
     "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume",
     "source=mise-cache,target=/home/vscode/.local/share/mise,type=volume",
-    "source=${localWorkspaceFolder}/.devcontainer/firewall-extra-fqdns.txt,target=/usr/local/etc/firewall-extra-fqdns.txt,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.dotfiles-local-settings,target=/home/vscode/.dotfiles-local-settings,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.devcontainer/firewall-extra-fqdns.txt,target=/usr/local/etc/firewall-extra-fqdns.txt,type=bind,consistency=cached"
   ],
   "containerEnv": {
     "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
