@@ -84,12 +84,17 @@ mkdir -p \
     /workspace \
     /commandhistory \
     "${HOME_DIR}/.claude" \
-    "${HOME_DIR}/.cache" \
     "${HOME_DIR}/.config/mise/conf.d" \
-    "${HOME_DIR}/.local/share/mise" \
-    "${HOME_DIR}/.local/share/uv" \
-    "${HOME_DIR}/.rustup" \
-    "${HOME_DIR}/.cargo"
+    "${HOME_DIR}/.local/share/mise"
+
+if [ -n "${HOMEDIRS:-}" ]; then
+    case "${HOMEDIRS}" in
+        *..*) echo "ERROR: rejecting unsafe homeDirs value: ${HOMEDIRS}" >&2; exit 1 ;;
+    esac
+    echo "${HOMEDIRS}" | tr ',' '\n' | while IFS= read -r dir; do
+        mkdir -p "${HOME_DIR}/${dir#/}"
+    done
+fi
 
 chown -R "${USERNAME}:${USERNAME}" \
     /workspace \

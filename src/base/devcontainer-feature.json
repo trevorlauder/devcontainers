@@ -1,6 +1,6 @@
 {
   "id": "base",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "name": "Base Development Environment",
   "description": "Base devcontainer image layer",
   "options": {
@@ -18,6 +18,11 @@
       "type": "string",
       "default": "vscode",
       "description": "Username to create and use as the container user."
+    },
+    "homeDirs": {
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of directories relative to $HOME to create as the container user (e.g. '.foo,.bar/baz')."
     }
   },
   "containerEnv": {
