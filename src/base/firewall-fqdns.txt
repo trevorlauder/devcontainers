@@ -1,5 +1,4 @@
 api.anthropic.com
-api.github.com
 deb.debian.org
 marketplace.visualstudio.com
 mise-versions.jdx.dev
