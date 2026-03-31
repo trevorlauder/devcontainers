@@ -86,6 +86,7 @@ mkdir -p \
     "${HOME_DIR}/.claude" \
     "${HOME_DIR}/.config/mise/conf.d" \
     "${HOME_DIR}/.local/share/mise" \
+    "${HOME_DIR}/.local/share/uv" \
     "${HOME_DIR}/.rustup" \
     "${HOME_DIR}/.cargo"
 
