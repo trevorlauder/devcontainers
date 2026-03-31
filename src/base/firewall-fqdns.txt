@@ -2,6 +2,7 @@ api.anthropic.com
 deb.debian.org
 marketplace.visualstudio.com
 mise-versions.jdx.dev
+pypi.org
 registry.npmjs.org
 sentry.io
 starship.rs
