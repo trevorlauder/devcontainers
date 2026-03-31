@@ -117,7 +117,7 @@ fi
 echo "Processing GitHub IPs..."
 while read -r cidr; do
     collect_range "${cidr}" "GitHub meta"
-done < <(echo "${github_ranges}" | jq -r '(.web + .api + .git)[]')
+done < <(echo "${github_ranges}" | jq -r '(.web + .api + .git)[] | select(contains(":") | not)')
 
 echo "Processing FQDNs..."
 while read -r domain; do
