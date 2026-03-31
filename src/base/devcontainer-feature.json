@@ -1,6 +1,6 @@
 {
   "id": "base",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "name": "Base Development Environment",
   "description": "Base devcontainer image layer",
   "options": {
