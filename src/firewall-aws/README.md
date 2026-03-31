@@ -15,6 +15,7 @@ Allows outbound traffic to AWS endpoints by generating FQDNs from botocore endpo
 | Options Id | Description                                                                                                   | Type    | Default Value |
 | ---------- | ------------------------------------------------------------------------------------------------------------- | ------- | ------------- |
 | regions    | Comma-separated list of AWS regions to allow (e.g. 'us-east-1,us-west-2'). If empty, all regions are allowed. | string  | -             |
+| services   | Comma-separated list of AWS services to allow (e.g. 's3,ec2'). If empty, all services are allowed.            | string  | -             |
 | fips       | Include FIPS endpoints (keys matching 'fips-_' or '_-fips').                                                  | boolean | false         |
 
 ---
