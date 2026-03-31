@@ -9,7 +9,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["src/base/devcontainer-feature\\.json"],
+      "managerFilePatterns": [
+        "/src/base/devcontainer-feature\\.json/"
+      ],
       "matchStrings": [
         "\"chezmoiVersion\"[\\s\\S]*?\"default\":\\s*\"(?<currentValue>[^\"]+)\""
       ],
