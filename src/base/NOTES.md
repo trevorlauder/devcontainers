@@ -40,7 +40,7 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
   "name": "My Devcontainer Name",
   "image": "mcr.microsoft.com/devcontainers/base:trixie",
   "features": {
-    "ghcr.io/trevorlauder/devcontainers/base:1": {}
+    "ghcr.io/trevorlauder/devcontainers/base:1.1.6": {}
   },
   "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"],
   "customizations": {
@@ -61,7 +61,8 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "zsh": {
-            "path": "zsh"
+            "path": "zsh",
+            "args": ["-l"]
           }
         }
       }
@@ -69,13 +70,15 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
   },
   "remoteUser": "vscode",
   "mounts": [
-    "source=shell-history-${devcontainerId},target=/commandhistory,type=volume",
+    "source=shell-history-${localWorkspaceFolderBasename},target=/commandhistory,type=volume",
     "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume",
     "source=mise-cache,target=/home/vscode/.local/share/mise,type=volume",
-    "source=${localWorkspaceFolder}/.devcontainer/firewall-extra-fqdns.txt,target=/usr/local/etc/firewall-extra-fqdns.txt,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.devcontainer/firewall-extra-fqdns.txt,target=/usr/local/etc/firewall-extra-fqdns.txt,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.dotfiles-local-settings,target=/home/vscode/.dotfiles-local-settings,type=bind,consistency=cached"
   ],
   "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
+    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
+    "CHEZMOI_CONTEXT": "work"
   },
   "remoteEnv": {
     "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}"
