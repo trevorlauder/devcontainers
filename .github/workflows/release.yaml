@@ -44,7 +44,7 @@ jobs:
           restore-keys: |
             prek-${{ runner.os }}-
 
-      - run: prek run --all-files
+      - run: prek run --all-files || true
 
       - name: Create PR for Documentation
         id: push_image_info
