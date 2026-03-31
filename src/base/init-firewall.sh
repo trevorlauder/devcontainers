@@ -7,9 +7,10 @@ collect_range() {
 
     if [[ ! "${range}" =~ ${ip_regex} ]]; then
         echo "ERROR: Invalid range from ${context}: ${range}"
-        exit 1
+        return
     fi
 
+    [[ "${range}" != */* ]] && range="${range}/32"
     ranges+="${range}"$'\n'
 }
 

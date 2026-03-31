@@ -99,6 +99,6 @@ chown -R "${USERNAME}:${USERNAME}" \
 
 echo "export TZ=${TIMEZONE}" > /etc/profile.d/devcontainer-base.sh
 
-install -m 0755 ${FEATURE_DIR}/init-container.sh /usr/local/bin/init-container.sh
-install -m 0744 ${FEATURE_DIR}/init-firewall.sh /usr/local/sbin/init-firewall.sh
-install -m 0644 ${FEATURE_DIR}/firewall-fqdns.txt /usr/local/etc/firewall-fqdns.txt
+install -m 0755 ${FEATURE_DIR}/init-container.sh /usr/local/bin/
+install -m 0744 ${FEATURE_DIR}/init-firewall.sh /usr/local/sbin/
+install -m 0644 ${FEATURE_DIR}/firewall-fqdns.txt /usr/local/etc/
