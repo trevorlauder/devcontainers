@@ -6,11 +6,13 @@ FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 mkdir -p /usr/local/etc/firewall-extra-fqdns.d
 
 regions_array=$(echo "${REGIONS}" | tr ',' '\n' | jq -Rsc '[split("\n")[] | select(length > 0)]')
+services_array=$(echo "${SERVICES}" | tr ',' '\n' | jq -Rsc '[split("\n")[] | select(length > 0)]')
 
-jq -r --argjson regions "${regions_array}" --argjson fips "${FIPS}" '
+jq -r --argjson regions "${regions_array}" --argjson services "${services_array}" --argjson fips "${FIPS}" '
     .partitions[] | select(.partition == "aws") |
     . as $partition |
     .services | to_entries[] | . as $service |
+    select($services | length == 0 or ($services | contains([$service.key]))) |
     .value.endpoints | to_entries[] |
     .key as $region |
     (if .value.hostname then .value.hostname
