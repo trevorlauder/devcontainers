@@ -2,26 +2,49 @@ name: "Release dev container features & Generate Documentation"
 on:
   workflow_dispatch:
 
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  release:
+    name: Release
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-      packages: write
+      contents: write # push documentation branch
+      pull-requests: write # create documentation PR
+      packages: write # publish features to GHCR
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
       - name: "Publish Features"
-        uses: devcontainers/action@v1
+        uses: devcontainers/action@1082abd5d2bf3a11abccba70eef98df068277772 # v1.4.3
         with:
           publish-features: "true"
           base-path-to-features: "./src"
           generate-docs: "true"
-          
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+        with:
+          install: true
+          cache: true
+
+      - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: ~/.cache/prek
+          key: prek-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          restore-keys: |
+            prek-${{ runner.os }}-
+
+      - run: prek run --all-files
 
       - name: Create PR for Documentation
         id: push_image_info
@@ -34,14 +57,14 @@ jobs:
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
           git config pull.rebase false
-          branch=automated-documentation-update-$GITHUB_RUN_ID
-          git checkout -b $branch
+          branch=automated-documentation-update-${GITHUB_RUN_ID}
+          git checkout -b "${branch}"
           message='Automated documentation update'
           # Add / update and commit
-          git add */**/README.md
+          git add -- */**/README.md
           git commit -m 'Automated documentation update [skip ci]' || export NO_UPDATES=true
           # Push
-          if [ "$NO_UPDATES" != "true" ] ; then
-              git push origin "$branch"
-              gh pr create --title "$message" --body "$message"
+          if [ "${NO_UPDATES}" != "true" ] ; then
+              git push origin "${branch}"
+              gh pr create --title "${message}" --body "${message}"
           fi
