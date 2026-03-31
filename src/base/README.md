@@ -80,7 +80,8 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "zsh": {
-            "path": "zsh"
+            "path": "zsh",
+            "args": ["-l"]
           }
         }
       }
@@ -88,7 +89,7 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
   },
   "remoteUser": "vscode",
   "mounts": [
-    "source=shell-history-${devcontainerId},target=/commandhistory,type=volume",
+    "source=shell-history-${localWorkspaceFolderBasename},target=/commandhistory,type=volume",
     "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume",
     "source=mise-cache,target=/home/vscode/.local/share/mise,type=volume",
     "source=${localWorkspaceFolder}/.devcontainer/firewall-extra-fqdns.txt,target=/usr/local/etc/firewall-extra-fqdns.txt,type=bind,consistency=cached"
