@@ -135,8 +135,8 @@ fqdns() {
         /usr/local/etc/firewall-extra-fqdns.d/* 2>/dev/null || true
 }
 
-fetch_github_ranges | collect_cidrs "GitHub"
-fqdns | resolve_domains "FQDNs"
+collect_cidrs "GitHub" < <(fetch_github_ranges)
+resolve_domains "FQDNs" < <(fqdns)
 
 echo "Adding aggregated ranges..."
 while read -r range; do
