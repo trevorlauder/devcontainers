@@ -31,7 +31,7 @@ The container starts an allowlist-based firewall that blocks all outbound traffi
 
 The built-in allowlist is defined in `src/base/firewall-fqdns.txt`.
 
-To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in your project with one domain per line and bind mount it into `/usr/local/etc/firewall-extra-fqdns.d/` as shown above. Any number of files can be dropped into that directory — by other features or by bind mount — and the firewall will include them all at startup.
+To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in your project with one domain per line and bind mount it into `/usr/local/etc/firewall-extra-fqdns.d/` as shown above. The firewall reads all files in that directory at startup, so other features or bind mounts can each contribute their own list of domains.
 
 ## Full Example
 
