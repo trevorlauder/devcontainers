@@ -1,7 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-USERNAME="vscode"
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 HOME_DIR="/home/${USERNAME}"
 SHELL="/usr/bin/zsh"
