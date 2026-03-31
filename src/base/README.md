@@ -12,10 +12,11 @@ Base devcontainer image layer
 
 ## Options
 
-| Options Id     | Description                | Type   | Default Value    |
-| -------------- | -------------------------- | ------ | ---------------- |
-| timezone       | Container timezone         | string | America/Edmonton |
-| chezmoiVersion | chezmoi version to install | string | 2.70.0           |
+| Options Id     | Description                                       | Type   | Default Value    |
+| -------------- | ------------------------------------------------- | ------ | ---------------- |
+| timezone       | Container timezone                                | string | America/Edmonton |
+| chezmoiVersion | chezmoi version to install                        | string | 2.70.0           |
+| username       | Username to create and use as the container user. | string | vscode           |
 
 # Base Development Environment Feature
 
