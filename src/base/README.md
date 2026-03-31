@@ -12,9 +12,10 @@ Base devcontainer image layer
 
 ## Options
 
-| Options Id | Description        | Type   | Default Value    |
-| ---------- | ------------------ | ------ | ---------------- |
-| timezone   | Container timezone | string | America/Edmonton |
+| Options Id     | Description                | Type   | Default Value    |
+| -------------- | -------------------------- | ------ | ---------------- |
+| timezone       | Container timezone         | string | America/Edmonton |
+| chezmoiVersion | chezmoi version to install | string | 2.70.0           |
 
 # Base Development Environment Feature
 
