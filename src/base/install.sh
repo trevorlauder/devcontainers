@@ -14,8 +14,8 @@ apt-get update -y
 apt-get install -y --no-install-recommends ca-certificates
 
 install -dm 755 /etc/apt/keyrings
-cp "${FEATURE_DIR}/mise-gpg-key.pub" /etc/apt/keyrings/mise-archive-keyring.asc
-cp "${FEATURE_DIR}/mise.list" /etc/apt/sources.list.d/mise.list
+install -m 0644 "${FEATURE_DIR}/mise-gpg-key.pub" /etc/apt/keyrings/mise-archive-keyring.asc
+install -m 0644 "${FEATURE_DIR}/mise.list" /etc/apt/sources.list.d/mise.list
 
 apt-get update -y
 apt-get install -y --no-install-recommends \
@@ -45,7 +45,7 @@ mkdir /tmp/chezmoi
     cd /tmp/chezmoi
 
     CHEZMOI_COSIGN_PUB="chezmoi_cosign.pub"
-    cp "${FEATURE_DIR}/${CHEZMOI_COSIGN_PUB}" .
+    install -m 0644 "${FEATURE_DIR}/${CHEZMOI_COSIGN_PUB}" .
 
     CHEZMOI_RELEASES_URL="https://github.com/twpayne/chezmoi/releases/download/v${CHEZMOIVERSION}"
     CHEZMOI_PKG="chezmoi_${CHEZMOIVERSION}_linux_${ARCH}.deb"
@@ -78,7 +78,7 @@ if ! id "${USERNAME}" &>/dev/null; then
     useradd --uid 1000 --gid 1000 --shell "${SHELL}" --create-home "${USERNAME}"
 fi
 
-cp ${FEATURE_DIR}/sudoers /etc/sudoers.d/${USERNAME}
+install -m 0440 "${FEATURE_DIR}/sudoers" /etc/sudoers.d/${USERNAME}
 
 git clone --depth 1 https://github.com/tarjoilija/zgen.git "${HOME_DIR}/.zgen"
 rm -rf "${HOME_DIR}/.zgen/.git"
@@ -100,3 +100,5 @@ chown -R "${USERNAME}:${USERNAME}" \
 echo "export TZ=${TIMEZONE}" > /etc/profile.d/devcontainer-base.sh
 
 install -m 0755 ${FEATURE_DIR}/init-container.sh /usr/local/bin/init-container.sh
+install -m 0744 ${FEATURE_DIR}/init-firewall.sh /usr/local/sbin/init-firewall.sh
+install -m 0644 ${FEATURE_DIR}/firewall-fqdns.txt /usr/local/etc/firewall-fqdns.txt

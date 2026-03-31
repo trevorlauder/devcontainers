@@ -8,4 +8,4 @@ eval "$(mise activate bash)"
 
 mise install --yes
 
-sudo /usr/local/bin/init-firewall.sh
+sudo /usr/local/sbin/init-firewall.sh

@@ -1,0 +1,15 @@
+api.anthropic.com
+api.github.com
+deb.debian.org
+marketplace.visualstudio.com
+mise-versions.jdx.dev
+plugins.dprint.dev
+pypi.org
+raw.githubusercontent.com
+registry.npmjs.org
+sentry.io
+starship.rs
+statsig.anthropic.com
+statsig.com
+update.code.visualstudio.com
+vscode.blob.core.windows.net
