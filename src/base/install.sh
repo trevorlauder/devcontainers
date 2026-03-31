@@ -6,7 +6,7 @@ TIMEZONE="${TIMEZONE:-America/Edmonton}"
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 HOME_DIR="/home/${USERNAME}"
 SHELL="/usr/bin/zsh"
-CHEZMOIVERSION="2.70.0"
+CHEZMOIVERSION="${CHEZMOIVERSION}"
 
 ARCH="$(dpkg --print-architecture)"
 

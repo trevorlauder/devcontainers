@@ -1,6 +1,6 @@
 {
   "id": "base",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "name": "Base Development Environment",
   "description": "Base devcontainer image layer",
   "options": {
@@ -8,6 +8,11 @@
       "type": "string",
       "default": "America/Edmonton",
       "description": "Container timezone"
+    },
+    "chezmoiVersion": {
+      "type": "string",
+      "default": "2.70.0",
+      "description": "chezmoi version to install"
     }
   },
   "containerEnv": {
