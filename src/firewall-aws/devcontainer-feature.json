@@ -1,6 +1,18 @@
 {
   "id": "firewall-aws",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "AWS Firewall FQDNs",
-  "description": "Allows outbound traffic to AWS endpoints by generating FQDNs from botocore endpoint data for the firewall"
+  "description": "Allows outbound traffic to AWS endpoints by generating FQDNs from botocore endpoint data for the firewall",
+  "options": {
+    "regions": {
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of AWS regions to allow (e.g. 'us-east-1,us-west-2'). If empty, all regions are allowed."
+    },
+    "fips": {
+      "type": "boolean",
+      "default": false,
+      "description": "Include FIPS endpoints (keys matching 'fips-*' or '*-fips')."
+    }
+  }
 }

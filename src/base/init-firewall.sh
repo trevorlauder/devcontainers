@@ -22,8 +22,8 @@ resolve_domain() {
     ips=$(dig +noall +answer A "${domain}" | awk '$4 == "A" {print $5}')
 
     if [ -z "${ips}" ]; then
-        echo "ERROR: Failed to resolve ${domain}"
-        exit 1
+        echo "WARNING: Failed to resolve ${domain}, skipping"
+        return
     fi
 
     while read -r ip; do

@@ -2,11 +2,9 @@
 set -euo pipefail
 
 USERNAME="vscode"
-TIMEZONE="${TIMEZONE:-America/Edmonton}"
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 HOME_DIR="/home/${USERNAME}"
 SHELL="/usr/bin/zsh"
-CHEZMOIVERSION="${CHEZMOIVERSION}"
 
 ARCH="$(dpkg --print-architecture)"
 
