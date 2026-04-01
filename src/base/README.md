@@ -19,6 +19,16 @@ Base devcontainer image layer
 | username       | Username to create and use as the container user.                                                             | string | vscode           |
 | homeDirs       | Comma-separated list of directories relative to $HOME to create as the container user (e.g. '.foo,.bar/baz'). | string | -                |
 
+## Customizations
+
+### VS Code Extensions
+
+- `anthropic.claude-code`
+- `eamodio.gitlens`
+- `github.vscode-pull-request-github`
+- `ms-azuretools.vscode-containers`
+- `ms-python.python`
+
 # Base Development Environment Feature
 
 Provides a foundational devcontainer layer with zsh, mise (version management), chezmoi (dotfiles), and a restrictive allowlist-based firewall.
@@ -66,19 +76,8 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
   "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"],
   "customizations": {
     "vscode": {
-      "extensions": [
-        "anthropic.claude-code",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "ms-azuretools.vscode-containers",
-        "ms-python.python"
-      ],
+      "extensions": [],
       "settings": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "explicit"
-        },
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "zsh": {
