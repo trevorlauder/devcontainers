@@ -34,20 +34,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: "Generate GitHub App Token"
-        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
-        id: app-token
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: "Login to GitHub Container Registry"
-        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4.0.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ steps.app-token.outputs.token }}
-
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
 
@@ -71,20 +57,6 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
-
-      - name: "Generate GitHub App Token"
-        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
-        id: app-token
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: "Login to GitHub Container Registry"
-        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4.0.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ steps.app-token.outputs.token }}
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli

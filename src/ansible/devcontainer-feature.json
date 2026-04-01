@@ -4,8 +4,8 @@
   "name": "Ansible Feature",
   "description": "Configures Ansible tooling and optionally allows outbound traffic to Ansible endpoints for the firewall.",
   "dependsOn": {
-    "ghcr.io/trevorlauder/devcontainer/base": {},
-    "ghcr.io/trevorlauder/devcontainer/python": {}
+    "ghcr.io/trevorlauder/devcontainers/base": {},
+    "ghcr.io/trevorlauder/devcontainers/python": {}
   },
   "options": {
     "enableFirewall": {

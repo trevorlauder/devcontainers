@@ -4,7 +4,7 @@
   "name": "AWS Feature",
   "description": "Configures AWS tooling and optionally allows outbound traffic to AWS endpoints for the firewall.",
   "dependsOn": {
-    "ghcr.io/trevorlauder/devcontainer/base": {}
+    "ghcr.io/trevorlauder/devcontainers/base": {}
   },
   "options": {
     "enableFirewall": {
