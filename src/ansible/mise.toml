@@ -1,2 +1,9 @@
 [tools]
-ansible = { version = "latest", uvx = "true" }
+ansible = { version = "13.3.0", uvx = "true" }
+
+[hooks]
+postinstall = "[ -f requirements.yml ] && ansible-galaxy collection install -r requirements.yml || true"
+
+[tasks.install]
+description = "Install Ansible Galaxy collections"
+run = "[ -f requirements.yml ] && ansible-galaxy collection install -r requirements.yml || true"

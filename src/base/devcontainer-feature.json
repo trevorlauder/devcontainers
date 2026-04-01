@@ -1,6 +1,6 @@
 {
   "id": "base",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "name": "Base Development Environment",
   "description": "Base devcontainer image layer",
   "options": {
@@ -23,6 +23,17 @@
       "type": "string",
       "default": "",
       "description": "Comma-separated list of directories relative to $HOME to create as the container user (e.g. '.foo,.bar/baz')."
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "eamodio.gitlens",
+        "github.vscode-pull-request-github",
+        "ms-azuretools.vscode-containers",
+        "ms-python.python"
+      ]
     }
   },
   "containerEnv": {

@@ -1,6 +1,6 @@
 {
   "id": "python",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Python Feature",
   "description": "Configures Python tooling and optionally allows outbound traffic to Python endpoints for the firewall.",
   "dependsOn": {
@@ -16,6 +16,19 @@
       "type": "string",
       "default": "vscode",
       "description": "Username that owns created files and directories."
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff"
+      ],
+      "settings": {
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true
+        }
+      }
     }
   }
 }

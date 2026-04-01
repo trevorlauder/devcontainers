@@ -1,6 +1,6 @@
 {
   "id": "ansible",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Ansible Feature",
   "description": "Configures Ansible tooling and optionally allows outbound traffic to Ansible endpoints for the firewall.",
   "dependsOn": {
@@ -17,6 +17,13 @@
       "type": "string",
       "default": "vscode",
       "description": "Username that owns created files and directories."
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.ansible"
+      ]
     }
   }
 }
