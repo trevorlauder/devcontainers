@@ -1,6 +1,6 @@
 {
   "id": "aws",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "AWS Feature",
   "description": "Configures AWS tooling and optionally allows outbound traffic to AWS endpoints for the firewall.",
   "options": {
