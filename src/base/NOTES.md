@@ -43,7 +43,6 @@ To allow additional domains, create `.devcontainer/firewall-extra-fqdns.txt` in 
     "ghcr.io/trevorlauder/devcontainers/base:1": {}
   },
   "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"],
-  "remoteUser": "vscode",
   "mounts": [
     "source=shell-history-${localWorkspaceFolderBasename},target=/commandhistory,type=volume",
     "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume",
