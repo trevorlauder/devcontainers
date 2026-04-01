@@ -1,2 +1,2 @@
 [tools]
-awscli = { version = "2.34.20" , symlink_bins = "true" }
+awscli = { version = "2.34.21" , symlink_bins = "true" }
