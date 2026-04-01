@@ -23,6 +23,9 @@ jobs:
       matrix:
         features:
           - base
+          - ansible
+          - aws
+          - python
         baseImage:
           - debian:trixie
           - mcr.microsoft.com/devcontainers/base:trixie

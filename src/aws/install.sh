@@ -4,8 +4,6 @@ set -euo pipefail
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 if [ "${ENABLEFIREWALL}" = "true" ]; then
-    mkdir -p /usr/local/etc/firewall-extra-fqdns.d
-
     regions_array=$(echo "${REGIONS}" | tr ',' '\n' | jq -Rsc '[split("\n")[] | select(length > 0)]')
     services_array=$(echo "${SERVICES}" | tr ',' '\n' | jq -Rsc '[split("\n")[] | select(length > 0)]')
 
@@ -26,10 +24,10 @@ if [ "${ENABLEFIREWALL}" = "true" ]; then
         > /usr/local/etc/firewall-extra-fqdns.d/feature-firewall-aws-fqdns.txt
 fi
 
-install -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/100-aws.toml"
+install -o "${USERNAME}" -g "${USERNAME}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/110-aws.toml"
 
 if [ "${USEGRANTED}" = "true" ]; then
     mkdir -p /home/${USERNAME}/.granted
     chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.granted
-    install -m 0644 "${FEATURE_DIR}/mise.granted.toml" "/home/${USERNAME}/.config/mise/conf.d/110-aws-granted.toml"
+    install -o "${USERNAME}" -g "${USERNAME}" -m 0644 "${FEATURE_DIR}/mise.granted.toml" "/home/${USERNAME}/.config/mise/conf.d/111-aws-granted.toml"
 fi

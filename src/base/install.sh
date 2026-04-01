@@ -83,6 +83,7 @@ rm -rf "${HOME_DIR}/.zgen/.git"
 mkdir -p \
     /workspace \
     /commandhistory \
+    /usr/local/etc/firewall-extra-fqdns.d \
     "${HOME_DIR}/.claude" \
     "${HOME_DIR}/.config/mise/conf.d" \
     "${HOME_DIR}/.local/share/mise"
@@ -101,7 +102,7 @@ chown -R "${USERNAME}:${USERNAME}" \
     /commandhistory \
     "${HOME_DIR}"
 
-install -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/000-base.toml"
+install -o "${USERNAME}" -g "${USERNAME}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/000-base.toml"
 
 echo "export TZ=${TIMEZONE}" > /etc/profile.d/devcontainer-base.sh
 

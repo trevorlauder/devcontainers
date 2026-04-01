@@ -1,0 +1,21 @@
+{
+  "id": "python",
+  "version": "1.0.0",
+  "name": "Python Feature",
+  "description": "Configures Python tooling and optionally allows outbound traffic to Python endpoints for the firewall.",
+  "dependsOn": {
+    "ghcr.io/trevorlauder/devcontainers/base": {}
+  },
+  "options": {
+    "enableFirewall": {
+      "type": "boolean",
+      "default": true,
+      "description": "Generate FQDN allow-list entries for Python endpoints used by the firewall feature."
+    },
+    "username": {
+      "type": "string",
+      "default": "vscode",
+      "description": "Username that owns created files and directories."
+    }
+  }
+}

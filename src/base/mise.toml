@@ -1,5 +1,4 @@
 [tools]
-uv = "0.11.2"
 python = "3.14.3"
 claude-code = "2.1.86"
 github-cli = "2.89.0"
