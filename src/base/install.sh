@@ -105,7 +105,7 @@ chown -R "${USERNAME}:${USERNAME}" \
     /commandhistory \
     "${HOME_DIR}"
 
-install -o "${USERNAME}" -g "${USERNAME}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/000-base.toml"
+install -o "${USERNAME}" -g "${USERNAME}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/999-base.toml"
 
 echo "export TZ=${TIMEZONE}" > /etc/profile.d/devcontainer-base.sh
 

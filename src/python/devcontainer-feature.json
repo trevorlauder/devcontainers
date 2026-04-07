@@ -1,6 +1,6 @@
 {
   "id": "python",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "Python Feature",
   "description": "Configures Python tooling and optionally allows outbound traffic to Python endpoints for the firewall.",
   "dependsOn": {
