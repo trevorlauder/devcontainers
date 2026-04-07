@@ -1,6 +1,6 @@
 {
   "id": "ansible",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "Ansible Feature",
   "description": "Configures Ansible tooling and optionally allows outbound traffic to Ansible endpoints for the firewall.",
   "dependsOn": {
