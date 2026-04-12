@@ -1,0 +1,23 @@
+{
+  "id": "homebrew",
+  "version": "1.0.0",
+  "name": "Homebrew",
+  "description": "Installs Homebrew and optionally installs packages",
+  "installsAfter": [
+    "ghcr.io/trevorlauder/devcontainers/base"
+  ],
+  "options": {
+    "packages": {
+      "type": "string",
+      "default": "",
+      "description": "Space-separated list of Homebrew packages to install"
+    }
+  },
+  "containerEnv": {
+    "HOMEBREW_NO_ENV_HINTS": "1",
+    "PATH": "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}",
+    "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
+    "HOMEBREW_CELLAR": "/home/linuxbrew/.linuxbrew/Cellar",
+    "HOMEBREW_REPOSITORY": "/home/linuxbrew/.linuxbrew/Homebrew"
+  }
+}

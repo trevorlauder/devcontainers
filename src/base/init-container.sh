@@ -10,9 +10,6 @@ eval "$(mise activate bash)"
 
 mise install --yes
 
-
 if command -v ${post_init_cmd}; then
   ${post_init_cmd}
 fi
-
-sudo /usr/local/sbin/init-firewall.sh

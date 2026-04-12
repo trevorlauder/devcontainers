@@ -3,8 +3,12 @@ set -euo pipefail
 
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-if [ "${ENABLEFIREWALL}" = "true" ]; then
-    install -m 0644 "${FEATURE_DIR}/firewall-fqdns.txt" /usr/local/etc/firewall-extra-fqdns.d/feature-ansible-fqdns.txt
+if [ "${_REMOTE_USER:-root}" = "root" ]; then
+  echo "❌ This Feature requires a non-root remoteUser."
+
+  exit 1
 fi
 
-install -o "${USERNAME}" -g "${USERNAME}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/969-ansible.toml"
+REMOTE_USER_HOME="${_REMOTE_USER_HOME:-/home/${_REMOTE_USER}}"
+
+install -o "${_REMOTE_USER}" -g "${_REMOTE_USER}" -m 0644 "${FEATURE_DIR}/mise.toml" "${REMOTE_USER_HOME}/.config/mise/conf.d/969-ansible.toml"

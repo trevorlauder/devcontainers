@@ -25,6 +25,7 @@ jobs:
           - base
           - ansible
           - aws
+          - homebrew
           - python
         baseImage:
           - debian:trixie

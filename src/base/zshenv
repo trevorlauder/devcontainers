@@ -1,0 +1,2 @@
+
+export LOGNAME=$(id -un)

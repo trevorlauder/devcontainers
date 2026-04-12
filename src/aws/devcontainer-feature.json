@@ -2,40 +2,15 @@
   "id": "aws",
   "version": "1.1.5",
   "name": "AWS Feature",
-  "description": "Configures AWS tooling and optionally allows outbound traffic to AWS endpoints for the firewall.",
-  "dependsOn": {
-    "ghcr.io/trevorlauder/devcontainers/base": {}
-  },
+  "description": "Configures AWS tooling",
+  "installsAfter": [
+    "ghcr.io/trevorlauder/devcontainers/base"
+  ],
   "options": {
-    "enableFirewall": {
-      "type": "boolean",
-      "default": true,
-      "description": "Generate FQDN allow-list entries for AWS endpoints used by the firewall feature."
-    },
-    "regions": {
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of AWS regions to allow (e.g. 'us-east-1,us-west-2'). If empty, all regions are allowed."
-    },
-    "services": {
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of AWS services to allow (e.g. 's3,ec2'). If empty, all services are allowed."
-    },
-    "fips": {
-      "type": "boolean",
-      "default": false,
-      "description": "Include FIPS endpoints (keys matching 'fips-*' or '*-fips')."
-    },
     "useGranted": {
       "type": "boolean",
       "default": true,
-      "description": "Install and setup Granted."
-    },
-    "username": {
-      "type": "string",
-      "default": "vscode",
-      "description": "Username that owns created files and directories."
+      "description": "Install and setup Granted"
     }
   }
 }

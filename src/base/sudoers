@@ -1,2 +1,0 @@
-Defaults env_keep += "GITHUB_TOKEN"
-vscode ALL=(root) NOPASSWD: /usr/local/sbin/init-firewall.sh
