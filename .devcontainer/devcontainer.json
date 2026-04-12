@@ -1,0 +1,17 @@
+{
+  "name": "Devcontainers",
+  "image": "mcr.microsoft.com/devcontainers/base:trixie",
+  "features": {
+    "ghcr.io/trevorlauder/devcontainers/base:1": {},
+    "ghcr.io/trevorlauder/devcontainers/homebrew:1": {}
+  },
+  "mounts": [
+    "source=claude-code-config-${devcontainerId},target=/home/tlauder/.claude,type=volume",
+    "source=mise-cache,target=/home/tlauder/.local/share/mise,type=volume"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+  "initializeCommand": "nerdctl run --rm -v vscode:/vscode alpine chmod 755 /vscode 2>/dev/null || true",
+  "postStartCommand": "/usr/local/bin/init-container.sh",
+  "waitFor": "postStartCommand"
+}
