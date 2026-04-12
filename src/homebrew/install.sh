@@ -1,12 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-REMOTE_USER="${_REMOTE_USER:-devcontainer}"
-
-if [ "${REMOTE_USER}" = "root" ]; then
-  echo "❌ This Feature requires a non-root remoteUser."
-
-  exit 1
+if [ "${_REMOTE_USER:-root}" = "root" ]; then
+  REMOTE_USER="devcontainer"
+else
+  REMOTE_USER="${_REMOTE_USER}"
 fi
 
 export BREW_VERSION="5.1.5"

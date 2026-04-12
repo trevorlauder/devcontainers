@@ -3,12 +3,10 @@ set -euo pipefail
 
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-REMOTE_USER="${_REMOTE_USER:-devcontainer}"
-
-if [ "${REMOTE_USER}" = "root" ]; then
-  echo "❌ This Feature requires a non-root remoteUser."
-
-  exit 1
+if [ "${_REMOTE_USER:-root}" = "root" ]; then
+  REMOTE_USER="devcontainer"
+else
+  REMOTE_USER="${_REMOTE_USER}"
 fi
 
 REMOTE_USER_HOME=${_REMOTE_USER_HOME:-/home/${REMOTE_USER}}

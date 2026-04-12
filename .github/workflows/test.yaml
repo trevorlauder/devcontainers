@@ -30,9 +30,6 @@ jobs:
         baseImage:
           - debian:trixie
           - mcr.microsoft.com/devcontainers/base:trixie
-        include:
-          - baseImage: debian:trixie
-            remoteUser: devcontainer
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -45,8 +42,7 @@ jobs:
         env:
           FEATURES: ${{ matrix.features }}
           BASE_IMAGE: ${{ matrix.baseImage }}
-          REMOTE_USER: ${{ matrix.remoteUser }}
-        run: devcontainer features test --skip-scenarios -f "${FEATURES}" -i "${BASE_IMAGE}" ${REMOTE_USER:+--remote-user "${REMOTE_USER}"} .
+        run: devcontainer features test --skip-scenarios -f "${FEATURES}" -i "${BASE_IMAGE}" .
 
   test-scenarios:
     name: Test Scenarios
