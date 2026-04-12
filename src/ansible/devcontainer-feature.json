@@ -1,6 +1,6 @@
 {
   "id": "ansible",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "name": "Ansible Feature",
   "description": "Configures Ansible tooling",
   "dependsOn": {
