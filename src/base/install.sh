@@ -1,15 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-if [ "${_REMOTE_USER:-root}" = "root" ]; then
-  REMOTE_USER="devcontainer"
-else
-  REMOTE_USER="${_REMOTE_USER}"
+USERNAME="${_REMOTE_USER:-"$(awk -v val=1000 -F: '$3==val{print $1}' /etc/passwd)"}"
+if [ -z "${USERNAME}" ] || [ "${USERNAME}" = "root" ]; then
+  USERNAME="devcontainer"
 fi
 
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 SHELL="/usr/bin/zsh"
-REMOTE_USER_HOME="${_REMOTE_USER_HOME:-/home/${REMOTE_USER}}"
+USER_HOME="/home/${USERNAME}"
 
 ARCH="$(dpkg --print-architecture)"
 
@@ -73,29 +72,29 @@ mkdir /tmp/chezmoi
 
 rm -rf /tmp/chezmoi
 
-if ! id "${REMOTE_USER}" &>/dev/null; then
-  groupadd --gid 2000 "${REMOTE_USER}"
-  useradd --uid 2000 --gid 2000 --shell "${SHELL}" --create-home "${REMOTE_USER}"
+if ! id "${USERNAME}" &>/dev/null; then
+  groupadd --gid 2000 "${USERNAME}"
+  useradd --uid 2000 --gid 2000 --shell "${SHELL}" --create-home "${USERNAME}"
 fi
 
 mkdir -p \
-  "${REMOTE_USER_HOME}/.cache/pre-commit" \
-  "${REMOTE_USER_HOME}/.cache/prek" \
-  "${REMOTE_USER_HOME}/.claude" \
-  "${REMOTE_USER_HOME}/.config/mise/conf.d" \
-  "${REMOTE_USER_HOME}/.local/share/mise"
+  "${USER_HOME}/.cache/pre-commit" \
+  "${USER_HOME}/.cache/prek" \
+  "${USER_HOME}/.claude" \
+  "${USER_HOME}/.config/mise/conf.d" \
+  "${USER_HOME}/.local/share/mise"
 
 if [ -n "${HOMEDIRS:-}" ]; then
   case "${HOMEDIRS}" in
     *..*) echo "ERROR: rejecting unsafe homeDirs value: ${HOMEDIRS}" >&2; exit 1 ;;
   esac
 
-  ( cd $REMOTE_USER_HOME && mkdir -p $HOMEDIRS)
+  ( cd $USER_HOME && mkdir -p $HOMEDIRS)
 fi
 
-chown -R "${REMOTE_USER}:${REMOTE_USER}" "${REMOTE_USER_HOME}"
+chown -R "${USERNAME}:${USERNAME}" "${USER_HOME}"
 
-install -o "${REMOTE_USER}" -g "${REMOTE_USER}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${REMOTE_USER}/.config/mise/conf.d/999-base.toml"
+install -o "${USERNAME}" -g "${USERNAME}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${USERNAME}/.config/mise/conf.d/999-base.toml"
 
 ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
 echo "${TIMEZONE}" > /etc/timezone

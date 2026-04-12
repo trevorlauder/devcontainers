@@ -3,18 +3,17 @@ set -euo pipefail
 
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-if [ "${_REMOTE_USER:-root}" = "root" ]; then
-  REMOTE_USER="devcontainer"
-else
-  REMOTE_USER="${_REMOTE_USER}"
+USERNAME="${_REMOTE_USER:-"$(awk -v val=1000 -F: '$3==val{print $1}' /etc/passwd)"}"
+if [ -z "${USERNAME}" ] || [ "${USERNAME}" = "root" ]; then
+  USERNAME="devcontainer"
 fi
 
-REMOTE_USER_HOME=${_REMOTE_USER_HOME:-/home/${REMOTE_USER}}
+USER_HOME="/home/${USERNAME}"
 
-install -o ${REMOTE_USER} -g ${REMOTE_USER} -m 0644 ${FEATURE_DIR}/mise.toml ${REMOTE_USER_HOME}/.config/mise/conf.d/989-aws.toml
+install -o ${USERNAME} -g ${USERNAME} -m 0644 ${FEATURE_DIR}/mise.toml ${USER_HOME}/.config/mise/conf.d/989-aws.toml
 
 if [ "${USEGRANTED}" = "true" ]; then
-    mkdir -p ${REMOTE_USER_HOME}/.granted
-    chown ${REMOTE_USER}:${REMOTE_USER} ${REMOTE_USER_HOME}/.granted
-    install -o ${REMOTE_USER} -g ${REMOTE_USER} -m 0644 ${FEATURE_DIR}/mise.granted.toml ${REMOTE_USER_HOME}/.config/mise/conf.d/988-aws-granted.toml
+    mkdir -p ${USER_HOME}/.granted
+    chown ${USERNAME}:${USERNAME} ${USER_HOME}/.granted
+    install -o ${USERNAME} -g ${USERNAME} -m 0644 ${FEATURE_DIR}/mise.granted.toml ${USER_HOME}/.config/mise/conf.d/988-aws-granted.toml
 fi
