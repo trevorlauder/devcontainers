@@ -101,4 +101,5 @@ echo "${TIMEZONE}" > /etc/timezone
 
 cat "${FEATURE_DIR}/zshenv" >> /etc/zsh/zshenv
 
+mkdir -p /usr/local/bin/
 install -m 0755 ${FEATURE_DIR}/init-container.sh /usr/local/bin/
