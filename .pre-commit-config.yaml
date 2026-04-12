@@ -20,7 +20,6 @@ repos:
         args:
           - --fix=lf
       - id: check-added-large-files
-        exclude: src/firewall-aws/botocore-endpoints.json
   - repo: local
     hooks:
       - id: dprint
