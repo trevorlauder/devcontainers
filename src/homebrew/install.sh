@@ -16,11 +16,11 @@ apt-get install -y --no-install-recommends build-essential procps curl file git
 rm -rf /var/lib/apt/lists/*
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-su "${USERNAME}" -c "${SCRIPT_DIR}/setup.sh"
+setpriv --reuid="${USERNAME}" --regid="${USERNAME}" --init-groups -- "${SCRIPT_DIR}/setup.sh"
 
 mkdir -p /home/linuxbrew
 ln -s "${HOMEBREW_PREFIX}" /home/linuxbrew/.linuxbrew
 
 if [ -n "${PACKAGES}" ]; then
-  su "${USERNAME}" -c "brew install ${PACKAGES}"
+  setpriv --reuid="${USERNAME}" --regid="${USERNAME}" --init-groups -- brew install ${PACKAGES}
 fi
