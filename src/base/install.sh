@@ -1,7 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-if [ "${_REMOTE_USER:-root}" = "root" ]; then
+REMOTE_USER="${_REMOTE_USER:-devcontainer}"
+
+if [ "${REMOTE_USER}" = "root" ]; then
   echo "❌ This Feature requires a non-root remoteUser."
 
   exit 1
@@ -9,7 +11,7 @@ fi
 
 FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 SHELL="/usr/bin/zsh"
-REMOTE_USER_HOME="${_REMOTE_USER_HOME:-/home/${_REMOTE_USER}}"
+REMOTE_USER_HOME="${_REMOTE_USER_HOME:-/home/${REMOTE_USER}}"
 
 ARCH="$(dpkg --print-architecture)"
 
@@ -73,9 +75,9 @@ mkdir /tmp/chezmoi
 
 rm -rf /tmp/chezmoi
 
-if ! id "${_REMOTE_USER}" &>/dev/null; then
-  groupadd --gid 2000 "${_REMOTE_USER}"
-  useradd --uid 2000 --gid 2000 --shell "${SHELL}" --create-home "${_REMOTE_USER}"
+if ! id "${REMOTE_USER}" &>/dev/null; then
+  groupadd --gid 2000 "${REMOTE_USER}"
+  useradd --uid 2000 --gid 2000 --shell "${SHELL}" --create-home "${REMOTE_USER}"
 fi
 
 mkdir -p \
@@ -93,9 +95,9 @@ if [ -n "${HOMEDIRS:-}" ]; then
   ( cd $REMOTE_USER_HOME && mkdir -p $HOMEDIRS)
 fi
 
-chown -R "${_REMOTE_USER}:${_REMOTE_USER}" "${REMOTE_USER_HOME}"
+chown -R "${REMOTE_USER}:${REMOTE_USER}" "${REMOTE_USER_HOME}"
 
-install -o "${_REMOTE_USER}" -g "${_REMOTE_USER}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${_REMOTE_USER}/.config/mise/conf.d/999-base.toml"
+install -o "${REMOTE_USER}" -g "${REMOTE_USER}" -m 0644 "${FEATURE_DIR}/mise.toml" "/home/${REMOTE_USER}/.config/mise/conf.d/999-base.toml"
 
 ln -sf "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime
 echo "${TIMEZONE}" > /etc/timezone
