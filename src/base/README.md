@@ -23,7 +23,6 @@ Base devcontainer image layer
 
 ### VS Code Extensions
 
-- `anthropic.claude-code`
 - `eamodio.gitlens`
 - `github.vscode-pull-request-github`
 - `ms-azuretools.vscode-containers`
