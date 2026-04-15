@@ -1,6 +1,3 @@
-[env]
-GITHUB_TOKEN = "{{env.GITHUB_TOKEN | default(value=exec(command='gh auth token'))}}"
-
 [tools]
 actionlint = "1.7.12"
 dprint = "0.54.0"
