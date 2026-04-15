@@ -1,6 +1,6 @@
 {
   "id": "homebrew",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "name": "Homebrew",
   "description": "Installs Homebrew and optionally installs packages",
   "dependsOn": {

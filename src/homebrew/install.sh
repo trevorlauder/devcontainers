@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+FEATURE_DIR="$(cd "$(dirname "$0")" && pwd)"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 USERNAME="${_REMOTE_USER:-"$(awk -v val=1000 -F: '$3==val{print $1}' /etc/passwd)"}"
