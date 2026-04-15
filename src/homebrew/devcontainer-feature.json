@@ -1,6 +1,6 @@
 {
   "id": "homebrew",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "name": "Homebrew",
   "description": "Installs Homebrew and optionally installs packages",
   "dependsOn": {
@@ -18,6 +18,9 @@
     "PATH": "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}",
     "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
     "HOMEBREW_CELLAR": "/home/linuxbrew/.linuxbrew/Cellar",
-    "HOMEBREW_REPOSITORY": "/home/linuxbrew/.linuxbrew/Homebrew"
-  }
+    "HOMEBREW_REPOSITORY": "/home/linuxbrew/.linuxbrew/Homebrew",
+    "MANPATH": "/home/linuxbrew/.linuxbrew/share/man:${MANPATH}",
+    "INFOPATH": "/home/linuxbrew/.linuxbrew/share/info:${INFOPATH}"
+  },
+  "postStartCommand": "sudo /usr/local/sbin/feature-homebrew-post-start.sh"
 }

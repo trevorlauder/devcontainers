@@ -1,0 +1,1 @@
+%USERNAME% ALL=(root) NOPASSWD: /usr/local/sbin/feature-homebrew-post-start.sh

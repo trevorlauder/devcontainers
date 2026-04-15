@@ -29,6 +29,7 @@ apt-get install -y --no-install-recommends \
     gzip \
     less \
     procps \
+    sudo \
     dnsutils \
     gnupg2 \
     openssh-client \
@@ -39,9 +40,6 @@ apt-get install -y --no-install-recommends \
 if [ -n "${PACKAGES:-}" ]; then
   apt-get install -y --no-install-recommends $PACKAGES
 fi
-
-SUDO_FORCE_REMOVE=yes apt-get purge -y sudo
-rm -rf /etc/sudoers /etc/sudoers.d
 
 apt autoremove -y
 
