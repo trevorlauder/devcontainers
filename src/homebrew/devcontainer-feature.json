@@ -22,5 +22,5 @@
     "MANPATH": "/home/linuxbrew/.linuxbrew/share/man:${MANPATH}",
     "INFOPATH": "/home/linuxbrew/.linuxbrew/share/info:${INFOPATH}"
   },
-  "postStartCommand": "/usr/local/sbin/feature-homebrew-post-start.sh"
+  "postStartCommand": "/usr/local/bin/feature-homebrew-post-start.sh"
 }
