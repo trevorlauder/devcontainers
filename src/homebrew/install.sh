@@ -26,7 +26,8 @@ install -m 0440 ${FEATURE_DIR}/sudoers /etc/sudoers.d/feature-homebrew-${USERNAM
 sed -i "s/%USERNAME%/${USERNAME}/g" /etc/sudoers.d/feature-homebrew-${USERNAME}
 chmod 0440 /etc/sudoers.d/feature-homebrew-${USERNAME}
 
-install -m 0755 ${FEATURE_DIR}/post-start.sh /usr/local/sbin/feature-homebrew-post-start.sh
+install -m 0755 ${FEATURE_DIR}/post-start.sh /usr/local/bin/feature-homebrew-post-start.sh
+sed -i "s/%PACKAGES%/${PACKAGES}/g" /usr/local/bin/feature-homebrew-post-start.sh
+
 install -m 0755 ${FEATURE_DIR}/post-start-root.sh /usr/local/sbin/feature-homebrew-post-start-root.sh
 sed -i "s/%USERNAME%/${USERNAME}/g" /usr/local/sbin/feature-homebrew-post-start-root.sh
-sed -i "s/%PACKAGES%/${PACKAGES}/g" /usr/local/bin/feature-homebrew-post-start.sh
