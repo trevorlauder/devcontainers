@@ -1,6 +1,6 @@
 {
   "name": "Devcontainers",
-  "image": "dhi.io/debian-base:trixie-debian13-dev",
+  "image": "mcr.microsoft.com/devcontainers/base:trixie",
   "features": {
     "ghcr.io/trevorlauder/devcontainers/base:1": {},
     "ghcr.io/trevorlauder/devcontainers/homebrew:1": {}
